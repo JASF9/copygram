@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+
+  ul
+    each message in message_list
+      li
+        |  (#{message.date_formated})
+        p (#{message.content})
+        
+    else
+      li There are no notifications.

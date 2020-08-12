@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+
+  ul
+    each poste in post_list
+      li
+        a(href=poste.nickname.url) #{poste.nickname}
+        |  (#{poste.date_formated})
+        a(href=poste.url)
+          img(src=poste.image)
+        
+    else
+      li There are no posts.

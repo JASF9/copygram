@@ -1,0 +1,31 @@
+extends layout
+
+block content
+
+  div(style='margin left:20px; margin-top:20px; margin-right:20px')
+
+    dl
+      each poste in post_detail
+        dt
+          a(href=poste.nickname.url) #{poste.nickname}
+        dd #{poste.date_formated}
+        a(href=poste.url)
+          img(src=poste.image)
+        |  (#{poste.description})
+        |  (Likes #{poste.likes})
+        |  (Tagged: #{post_tags})
+        a(href='/nav/like') Like
+        p Comments
+          each comment in post_comments
+            a(href=comment.user.url) #{comment.user}
+            | (#{comment.content})
+            | (#{comment.date_formated})
+        form(method='POST' action='/nav/comment/create')
+            textarea#content.form-control(name='content')
+        button.btn.btn-primary(type='submit') Comment
+          else
+            p This post has no comments
+      
+      else
+        p Post not found
+        

@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h1= title
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='firstname') First Name:
+      input#firstname.form-control(type='text' name='firstname' required='true' value=(undefined===user ? '' : user.firstname))
+      label(for='lastname') Last Name:
+      input#lastname.form-control(type='text' name='lastname' required='true' value=(undefined===user ? '' : user.lastname))
+    div.form-group
+      label(for='nickname') Nickname:
+      input#nickname.form-control(type='text' name='nickname' required='true' value=(undefined===user ? '' : user.nickname))
+      label(for='password') Password:
+      input#password.form-control(type='password' name='password' required='true' value=(undefined===user ? '' : user.password)) 
+      label(for='email') Email:
+      input#email.form-control(type='text' name='email' required='true' value=(undefined===user ? '' : user.email))
+      label(for='description') Description:
+      input#description.form-control(type='text' name='description' required='true' value=(undefined===user ? '' : user.description))
+      label(for='private') Access:
+      select(name='private').form-control
+        option(value=false) Public
+        option(value=true) Private
+    button.btn.btn-primary(type='submit') Submit
+  if errors
+    ul
+      for error in errors
+        li!= error.msg

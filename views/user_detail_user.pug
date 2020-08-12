@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1 #{user.nickname}
+
+  p #{user.description}
+  
+  p Likes #{user.likes} Followers #{user.following}
+  a(href='/nav/message/list') Check Messages
+  a(href=user.url +'/update') Modify Account Info
+  a(href=user.url +'/delete') Delete Account 
+  a(href='/nav/poste/create') Make a Post
+  each poste in user_posts
+    a(href=poste.url)
+          img(src=poste.image)
+  else
+    p You have not made any posts

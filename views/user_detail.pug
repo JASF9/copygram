@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1 #{user.nickname}
+
+  p #{user.description}
+  
+  p Likes #{user.likes} Followers #{user.following}
+
+  a(href='/nav/follow/create') Follow
+  
+  each poste in user_posts
+    a(href=poste.url)
+          img(src=poste.image)
+  else
+    p This user has not made posts
